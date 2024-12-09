@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                           // 変換後のJavaScriptのターゲットバージョン
+    "module": "commonjs",                      // モジュールシステム（Node.jsはCommonJSを使用）
+    "strict": true,                            // 厳密な型チェックを有効化
+    "esModuleInterop": true,                   //! CommonJSモジュールのデフォルトインポートを許可
+    "forceConsistentCasingInFileNames": true,  // ファイル名の大文字小文字の一貫性を強制
+    "skipLibCheck": true,                      // 型定義ファイルのチェックをスキップ（パフォーマンス向上）
+    "outDir": "./dist",                        // コンパイル後の出力先ディレクトリ
+    "rootDir": "./src",                        // ソースファイルのルートディレクトリ
+    "resolveJsonModule": true,                 // JSONファイルをモジュールとしてインポート可能に
+    "moduleResolution": "node",               // Node.jsスタイルのモジュール解決を使用
+    "typeRoots": ["./node_modules/@types"],    // 型定義ファイルの検索パス
+    "allowSyntheticDefaultImports": true      // デフォルトインポートを許可（esModuleInterop補助）
+  },
+  "include": [
+    "src/**/*"                                 // コンパイル対象ファイル（srcフォルダ内のすべてのファイル）
+  ],
+  "exclude": [
+    "node_modules",                            // コンパイル対象外
+    "dist"                                     // 出力ディレクトリを対象外に
+  ]
+}
