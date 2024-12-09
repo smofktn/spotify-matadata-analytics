@@ -1,14 +1,3 @@
-# 環境構築
-
-```shell
-cp .env.sample .env
-```
-
-# 実行
-```shell
-npx tsc && node dist/index.js
-```
-
 # Spotifyの楽曲をランダムで選曲し成分抽出するツール
 ## 背景と目的
 * 楽曲のオーディオ特徴と再生数の関連
@@ -24,3 +13,27 @@ npx tsc && node dist/index.js
   * 有名なアーティストを25曲，有名でないアーティストを25曲
     * populalityが30以下だと有名ではない
     * populalityが30より大きいと有名
+
+
+# 実行環境
+```shell
+# nodeのバージョン
+v22.11.0
+```
+
+# 環境構築
+```shell
+# 必要なパッケージのインストール
+npm install
+```
+```shell
+cp .env.sample .env
+# .envに発行したIDを入れてください
+```
+
+
+# 実行
+```shell
+npx tsc && node dist/index.js
+```
+
