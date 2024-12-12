@@ -6,6 +6,7 @@ import { getTrackById } from './repository/getTrackById';
 import { searchWithQuery } from './repository/searchWithQuery';
 import { SearchQueryFieldType } from './type/SearchQueryFieldType';
 import { SearchOptions } from './type/SerchOptions';
+import { generateRandomOffset } from './common/generateRandomOffset';
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -18,7 +19,7 @@ const query = 'coda' // 'year:>=2000 genre:j-pop popularity:>30'
 const type:SearchType[] = ["artist"]
 const option:SearchOptions = {
   limit:2,
-  offset:0,
+  offset:generateRandomOffset(),
   market:'JP',
 } 
 
