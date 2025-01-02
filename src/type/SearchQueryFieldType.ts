@@ -9,12 +9,14 @@
 // tag	特殊タグを指定（hipster, new などが存在）。	tag:new
 
 export type SearchQueryFieldType = {
-  track?:string,
-  artist?:string,
-  album?:string,
-  genre?:string,
-  year?:string,
-  isrc?:string,
-  upc?:string,
-  tag?:string
-}
+  keyword?: string;
+  track?: string;
+  artist?: string;
+  album?: string;
+  genre?: string;
+  year?: string;
+  isrc?: string;
+  upc?: string;
+  tag?: string;
+  popularity?: string;
+};

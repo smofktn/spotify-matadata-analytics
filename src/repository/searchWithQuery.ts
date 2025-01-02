@@ -7,12 +7,17 @@ export const searchWithQuery = async(
   query: string,
   types: SearchType[],
   options: SearchOptions,
-) => {
+):Promise<SpotifyApi.SearchResponse | void> => {
   await getAccessToken();
   try{
-    return await spotifyApi.search(query,types,options);
+    const res = await spotifyApi.search(query,types,options);
+    if(res.body){
+      return res.body;
+    }else{
+      console.error('レスポンスにボディが含まれていません')
+    }
   }catch(error){
     console.error('クエリに検索に失敗しました\n', error)
   }
-  
+
 }
