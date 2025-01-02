@@ -3,9 +3,12 @@ import SpotifyWebApi from "spotify-web-api-node";
 import "dotenv/config";
 import { searchWithQuery } from "./repository/searchWithQuery";
 import { SearchOptions } from "./type/SerchOptions";
-import { generateRandomValueWithMax } from "./common/generateRandomValue";
+import { generateRandomValueWithMax, generateRandomValueWithMinAndMax } from "./common/generateRandomValue";
 import yargs from "yargs";
 import { isSearchType } from "./common/isSearchType";
+import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
+import { SearchQueryFieldType } from "./type/SearchQueryFieldType";
+import { genres } from "./enum/genres";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -13,8 +16,28 @@ export const spotifyApi = new SpotifyWebApi({
   clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
 });
 
+const minYear = 1930;
+const maxYear = 2025;
+
 const argv = yargs
   .options({
+    keyword: {
+      type: "string",
+      describe: "キーワード",
+      demandOption: false,
+    },
+    genre: {
+      type: "string",
+      describe: "ジャンル名",
+      demandOption: false,
+      default: genres[generateRandomValueWithMax(genres.length)],
+    },
+    year: {
+      type: "string",
+      describe: "年代",
+      demandOption:false,
+      default: generateRandomValueWithMinAndMax(minYear,maxYear).toString()
+    },
     limit: {
       type: "number",
       describe: "取得したいアイテム数",
@@ -31,7 +54,6 @@ const argv = yargs
   })
   .parseSync();
 
-const query = "coda"; // 'year:>=2000 genre:j-pop popularity:>30'
 const limit = argv.limit;
 const maxOffset = 1000;
 
@@ -48,6 +70,15 @@ const option: SearchOptions = {
   offset: generateRandomValueWithMax(maxOffset),
   market: "JP",
 };
+
+const param: SearchQueryFieldType = {
+  keyword:argv.keyword,
+  genre: argv.genre,
+  year:argv.year
+};
+
+const query = convertSearchQueryToString(param);
+console.info("query:", query);
 
 searchWithQuery(query, type, option)
   .then((resBody) => {
