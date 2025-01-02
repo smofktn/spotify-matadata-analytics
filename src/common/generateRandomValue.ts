@@ -2,10 +2,9 @@
 // offsetは0-1000
 // limitは0-50
 // デフォルトのminは0
-export const generateRandomValueWithMax = (max:number)=>{
-    return Math.floor(Math.random() * max + 1);
-}
-
+export const generateRandomValueWithMax = (max: number) => {
+  return Math.floor(Math.random() * max + 1);
+};
 
 //年代ランダム
 //range 2000-2024
