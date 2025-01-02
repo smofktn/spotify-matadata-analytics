@@ -8,7 +8,7 @@ export const generateRandomValueWithMax = (max: number) => {
 
 //年代ランダム
 //range 2000-2024
-export const generateRandomValueWithMinAndMax = (min:number, max:number) => {
-    const randomValue = Math.floor(Math.random() * max);
-    return min + randomValue;
-}
+export const generateRandomValueWithMinAndMax = (min: number, max: number) => {
+  const randomValue = Math.floor(Math.random() * (max - min + 1));
+  return min + randomValue;
+};
