@@ -1,13 +1,13 @@
-import { SearchType } from "./type/SearchType";
+import { SearchType } from "./types/SearchType";
 import SpotifyWebApi from "spotify-web-api-node";
 import "dotenv/config";
 import { searchWithQuery } from "./repository/searchWithQuery";
-import { SearchOptions } from "./type/SerchOptions";
+import { SearchOptions } from "./types/SerchOptions";
 import { generateRandomValueWithMax, generateRandomValueWithMinAndMax } from "./common/generateRandomValue";
 import yargs from "yargs";
 import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
-import { SearchQueryFieldType } from "./type/SearchQueryFieldType";
+import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
 import { genres } from "./enum/genres";
 
 // Spotify APIクライアントの初期化
