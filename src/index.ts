@@ -8,7 +8,7 @@ import yargs from "yargs";
 import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
 import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
-import { genres } from "./enum/genres";
+import { genres } from "./constants/genres";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
