@@ -38,6 +38,12 @@ const argv = yargs
       demandOption:false,
       default: generateRandomValueWithMinAndMax(minYear,maxYear).toString()
     },
+    popularity:{
+      type:"string",
+      describe: "有名度",
+      demandOption:false,
+      default:generateRandomValueWithMax(60).toString()
+    },
     limit: {
       type: "number",
       describe: "取得したいアイテム数",
@@ -74,7 +80,8 @@ const option: SearchOptions = {
 const param: SearchQueryFieldType = {
   keyword:argv.keyword,
   genre: argv.genre,
-  year:argv.year
+  year:argv.year,
+  popularity:argv.popularity
 };
 
 const query = convertSearchQueryToString(param);
