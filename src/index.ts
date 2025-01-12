@@ -12,7 +12,6 @@ import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
 import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
 import { genres } from "./constants/genres";
-import fs from "fs";
 import { getTimestampedFileName } from "./common/getTimestampedFileName";
 import { writeResponseToJsonFile } from "./common/writeResponseToJsonFile";
 
