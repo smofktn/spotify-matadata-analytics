@@ -1,4 +1,4 @@
-import { SearchQueryFieldType } from "../type/SearchQueryFieldType";
+import { SearchQueryFieldType } from "../types/SearchQueryFieldType";
 
 export const convertSearchQueryToString = (
   param: SearchQueryFieldType
