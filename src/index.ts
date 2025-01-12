@@ -12,6 +12,9 @@ import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
 import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
 import { genres } from "./constants/genres";
+import fs from "fs";
+import { getTimestampedFileName } from "./common/getTimestampedFileName";
+import { writeResponseToFile } from "./common/writeResponseToFile";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -86,6 +89,9 @@ console.info("query:", query);
 searchWithQuery(query, type, option)
   .then((resBody) => {
     console.log("レスポンス\n", JSON.stringify(resBody));
+    const fileName = getTimestampedFileName();
+    const filePath = `res/${fileName}.json`;
+    writeResponseToFile(filePath, resBody);
   })
   .catch((error) => {
     console.error("Error:", error);
