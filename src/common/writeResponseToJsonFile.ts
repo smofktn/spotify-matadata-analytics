@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export const writeResponseToFile = (
+export const writeResponseToJsonFile = (
   outputFilePath: string,
   responseBody: void | SpotifyApi.SearchResponse //TODO:Search以外にも対応できるようにする
 ): void => {

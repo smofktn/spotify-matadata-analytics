@@ -14,7 +14,7 @@ import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
 import { genres } from "./constants/genres";
 import fs from "fs";
 import { getTimestampedFileName } from "./common/getTimestampedFileName";
-import { writeResponseToFile } from "./common/writeResponseToFile";
+import { writeResponseToJsonFile } from "./common/writeResponseToJsonFile";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -91,7 +91,7 @@ searchWithQuery(query, type, option)
     console.log("レスポンス\n", JSON.stringify(resBody));
     const fileName = getTimestampedFileName();
     const filePath = `res/${fileName}.json`;
-    writeResponseToFile(filePath, resBody);
+    writeResponseToJsonFile(filePath, resBody);
   })
   .catch((error) => {
     console.error("Error:", error);
