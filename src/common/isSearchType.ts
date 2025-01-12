@@ -1,4 +1,4 @@
-import { SearchType } from "../type/SearchType";
+import { SearchType } from "../types/SearchType";
 
 export const isSearchType = (
   type: string

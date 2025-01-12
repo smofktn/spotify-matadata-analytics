@@ -1,14 +1,14 @@
-import { SearchType } from "./type/SearchType";
+import { SearchType } from "./types/SearchType";
 import SpotifyWebApi from "spotify-web-api-node";
 import "dotenv/config";
 import { searchWithQuery } from "./repository/searchWithQuery";
-import { SearchOptions } from "./type/SerchOptions";
+import { SearchOptions } from "./types/SerchOptions";
 import { generateRandomValueWithMax, generateRandomValueWithMinAndMax } from "./common/generateRandomValue";
 import yargs from "yargs";
 import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
-import { SearchQueryFieldType } from "./type/SearchQueryFieldType";
-import { genres } from "./enum/genres";
+import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
+import { genres } from "./constants/genres";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -37,6 +37,12 @@ const argv = yargs
       describe: "年代",
       demandOption:false,
       default: generateRandomValueWithMinAndMax(minYear,maxYear).toString()
+    },
+    popularity:{
+      type:"string",
+      describe: "有名度",
+      demandOption:false,
+      default:generateRandomValueWithMax(60).toString()
     },
     limit: {
       type: "number",
@@ -74,7 +80,8 @@ const option: SearchOptions = {
 const param: SearchQueryFieldType = {
   keyword:argv.keyword,
   genre: argv.genre,
-  year:argv.year
+  year:argv.year,
+  popularity:argv.popularity
 };
 
 const query = convertSearchQueryToString(param);

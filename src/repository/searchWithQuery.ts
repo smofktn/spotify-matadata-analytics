@@ -1,6 +1,6 @@
 import { spotifyApi } from ".."
-import { SearchType } from "../type/SearchType"
-import { SearchOptions } from "../type/SerchOptions"
+import { SearchType } from "../types/SearchType"
+import { SearchOptions } from "../types/SerchOptions"
 import { getAccessToken } from "./getAccessToken";
 
 export const searchWithQuery = async(

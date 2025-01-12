@@ -1,4 +1,4 @@
-import { SearchQueryFieldType } from "../type/SearchQueryFieldType";
+import { SearchQueryFieldType } from "../types/SearchQueryFieldType";
 
 export const convertSearchQueryToString = (
   param: SearchQueryFieldType
@@ -10,6 +10,7 @@ export const convertSearchQueryToString = (
   if (param.album) parts.push(`album:${param.album}`);
   if (param.genre) parts.push(`genre:${param.genre}`);
   if (param.year) parts.push(`year:${param.year}`);
-  if (param.popularity) parts.push(`year:${param.popularity}`);
+  //TODO: popularityはクエリに入れられないから消す
+  // if (param.popularity) parts.push(`popularity:${param.popularity}`);
   return parts.join(" ");
 };
