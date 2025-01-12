@@ -3,7 +3,10 @@ import SpotifyWebApi from "spotify-web-api-node";
 import "dotenv/config";
 import { searchWithQuery } from "./repository/searchWithQuery";
 import { SearchOptions } from "./types/SerchOptions";
-import { generateRandomValueWithMax, generateRandomValueWithMinAndMax } from "./common/generateRandomValue";
+import {
+  generateRandomValueWithMax,
+  generateRandomValueWithMinAndMax,
+} from "./common/generateRandomValue";
 import yargs from "yargs";
 import { isSearchType } from "./common/isSearchType";
 import { convertSearchQueryToString } from "./common/convertSearchQueryToString";
@@ -35,8 +38,8 @@ const argv = yargs
     year: {
       type: "string",
       describe: "年代",
-      demandOption:false,
-      default: generateRandomValueWithMinAndMax(minYear,maxYear).toString()
+      demandOption: false,
+      default: generateRandomValueWithMinAndMax(minYear, maxYear).toString(),
     },
     limit: {
       type: "number",
@@ -72,9 +75,9 @@ const option: SearchOptions = {
 };
 
 const param: SearchQueryFieldType = {
-  keyword:argv.keyword,
+  keyword: argv.keyword,
   genre: argv.genre,
-  year:argv.year
+  year: argv.year,
 };
 
 const query = convertSearchQueryToString(param);
