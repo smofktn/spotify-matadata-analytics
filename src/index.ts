@@ -14,6 +14,8 @@ import { SearchQueryFieldType } from "./types/SearchQueryFieldType";
 import { genres } from "./constants/genres";
 import { getTimestampedFileName } from "./common/getTimestampedFileName";
 import { writeResponseToJsonFile } from "./common/writeResponseToJsonFile";
+import { Parser } from "json2csv";
+import fs from "fs";
 
 // Spotify APIクライアントの初期化
 export const spotifyApi = new SpotifyWebApi({
@@ -91,7 +93,37 @@ searchWithQuery(query, type, option)
     const fileName = getTimestampedFileName();
     const filePath = `res/${fileName}.json`;
     writeResponseToJsonFile(filePath, resBody);
+    const parser = new Parser();
+    const csvData = parser.parse(resBody);
   })
   .catch((error) => {
     console.error("Error:", error);
   });
+
+const convertJsonToCsv = (jsonString: string) => {
+  const jsonData = JSON.parse(jsonString);
+  const parser = new Parser({
+    delimiter: ",", // カンマ区切り
+    header: true, // ヘッダーを含める
+    quote: '"', // ダブルクォートで囲む
+    eol: "\r\n", // 改行コードを Windows (Excelに適した形式)
+    transforms: [
+      (record) => {
+        // ネストごとに改行を入れる処理
+        return Object.keys(record)
+          .map((key) => `${key}: ${record[key]}`)
+          .join("\r\n");
+      },
+    ],
+  });
+  const csv = parser.parse(jsonData);
+  const fileName = getTimestampedFileName();
+  const filePath = `res/${fileName}.csv`;
+  fs.writeFile(filePath, csv, "utf-8", (err) => {
+    if (err) {
+      console.error("エラーが発生しました:", err);
+      return;
+    }
+    console.log("ファイルに書き込みが完了しました");
+  });
+};
