@@ -10,6 +10,8 @@ export const convertSearchQueryToString = (
   if (param.album) parts.push(`album:${param.album}`);
   if (param.genre) parts.push(`genre:${param.genre}`);
   if (param.year) parts.push(`year:${param.year}`);
-  if (param.popularity) parts.push(`year:${param.popularity}`);
+  if (param.isrc) parts.push(`year:${param.isrc}`);
+  if (param.upc) parts.push(`year:${param.upc}`);
+  if (param.tag) parts.push(`year:${param.tag}`);
   return parts.join(" ");
 };

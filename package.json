@@ -16,8 +16,6 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@spotify/web-api-ts-sdk": "^1.2.0",
-    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "spotify-web-api-node": "^5.0.2",
     "yargs": "^17.7.2"
