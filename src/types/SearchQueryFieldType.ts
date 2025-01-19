@@ -18,5 +18,4 @@ export type SearchQueryFieldType = {
   isrc?: string;
   upc?: string;
   tag?: string;
-  popularity?: string;
 };
