@@ -1,7 +1,7 @@
 import { spotifyApi } from "..";
 
 // アクセストークンを取得
-export const getAccessToken = async () => {
+export const getAccessToken = async (): Promise<void> => {
   try {
     const data = await spotifyApi.clientCredentialsGrant();
     const accessToken = data.body["access_token"];
