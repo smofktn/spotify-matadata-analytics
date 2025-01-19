@@ -14,5 +14,6 @@ export const getAccessToken = async (): Promise<void> => {
     return spotifyApi.setAccessToken(accessToken);
   } catch (error) {
     console.error("Error retrieving access token:", error);
+    throw error;
   }
 };
