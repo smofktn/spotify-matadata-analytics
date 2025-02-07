@@ -1,5 +1,5 @@
 {
-  "name": "ohto",
+  "name": "spotify-metadata-analytics",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

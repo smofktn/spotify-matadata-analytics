@@ -30,8 +30,9 @@ npm install
 
 ```shell
 cp .env.sample .env
-# .envに発行したIDを入れてください
+# .envに発行したIDを入れてください※1
 ```
+※1 [Spotify® for Developers](https://developer.spotify.com)で取得する。詳しい発行方法は[こちら](https://developer.spotify.com/documentation/web-api)
 
 # 実行
 
